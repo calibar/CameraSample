@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Welcome to Ionic!</h2>
+  <div showWhen="android">
+    <ion-icon name="camera" (click)="takePicture()">
+    </ion-icon>
+    <button (click)="uploadAndroid()">upload1</button>
+  </div>
+  <div hideWhen="android">  <button (click)="upload()">upload</button></div>
+  <input class="ionic-item" type="file" accept="image/*" (change)="changeListener($event)">
+  <div *ngIf="base64Image">
+    Latest Picture:
+    <div>
+      <br><img class="image-client" [src]="base64Image" *ngIf="base64Image" />
+    </div>
+</div>
+<ion-card>
+  <ion-card-header class="ionic-item">
+    Client Information
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-list>
+      <ion-item class="ionic-subitem">
+        <ion-label floating>Photo Name</ion-label>
+        <ion-input type="text" [(ngModel)]="photo.Name"></ion-input>
+      </ion-item>
+
+      <ion-item class="ionic-subitem">
+        <ion-label floating>Longitude</ion-label>
+        <ion-input type="number" [(ngModel)]="photo.Lon"></ion-input>
+      </ion-item>
+      <ion-item class="ionic-subitem">
+        <ion-label floating>Latitude</ion-label>
+        <ion-input type="number" [(ngModel)]="photo.Lat"></ion-input>
+      </ion-item>
+
+    </ion-list>
+  </ion-card-content>
+
+</ion-card>
+</ion-content>
